@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "docs:dev": "tsx scripts/build-adoc.ts && vitepress dev docs",
-    "docs:build": "tsx scripts/build-adoc.ts && vitepress build docs",
-    "docs:preview": "tsx scripts/build-adoc.ts && vitepress preview docs"
+    "dev": "tsx scripts/build-adoc.ts && vitepress dev docs",
+    "build": "tsx scripts/build-adoc.ts && vitepress build docs"
   },
   "dependencies": {
     "@asciidoctor/core": "^3.0.4",
