@@ -1,0 +1,44 @@
+---
+title: Asciidoc Frontmatter Example
+description: 説明文
+tags:
+  - tag1
+  - tag2
+---
+
+= 表示されるタイトル
+
+Asciidoc 本文の開始。
+
+
+
+== section
+:dummy: {counter2:section}
+:num: 0
+
+
+.list
+. this
+. is
+. ordered
+. list
+
+:def-sample: 定義 {section}.{counter:num}. サンプル
+[#def-sample.definition.NoBreak, title='{def-sample}']
+[[def-sample, {section}.{num}]]
+****
+定義枠が帰納するかのチェック
+****
+
+
+\(D = \int _a ^b f(x)dx\)
+
+\begin{align*}
+  S = \int _a ^b f(x)dx
+\end{align*}
+
+
+[source, javascript]
+----
+const val = require()
+----
