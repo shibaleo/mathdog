@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import asciidoctor from '@asciidoctor/core'
 import matter from 'gray-matter'
 import { replaceMathWithSVG } from './mathjax'
+import { escapeCodeblock } from './escape-codeblock'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const adoc = asciidoctor()
@@ -36,7 +37,7 @@ async function convertAll() {
     // HTML中の数式をSVGに変換
     const htmlWithSVG = replaceMathWithSVG(html)
     //HTML中のコードブロックをmd記法に変換
-    const htmlWithSVGandCodeBlock = convertCodeBlocksToMarkdown(htmlWithSVG)
+    const htmlWithSVGandCodeBlock = escapeCodeblock(htmlWithSVG)
 
     const frontmatter = {
       title: frontmatterData.title || baseName,
@@ -49,15 +50,6 @@ async function convertAll() {
     await fs.writeFile(outputPath, md, 'utf-8')
     console.log(`Converted ${file} → ${path.relative(process.cwd(), outputPath)}`)
   }
-}
-
-export function convertCodeBlocksToMarkdown(input: string): string {
-  return input.replace(
-    /<pre class="highlight">\s*<code class="language-([a-zA-Z0-9]+)"[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/g,
-    (_, lang: string, code: string) => {
-      return `\n\`\`\`${lang}\n${code}\n\`\`\`\n`
-    }
-  )
 }
 
 convertAll().catch(e => {
