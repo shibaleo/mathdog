@@ -25,6 +25,15 @@ async function convertAll() {
     const rawAdoc = await fs.readFile(inputPath, 'utf-8')
     const { content: adocBody, data: frontmatterData } = matter(rawAdoc)
 
+    const doc = adoc.load(adocBody, {
+      safe: 'unsafe',
+      backend: 'html5',
+      attributes: {
+        sectnums: true
+      }
+    });
+
+    
     // 1. AsciiDoc を HTML に変換
     const html = adoc.convert(adocBody, {
       safe: 'unsafe',
@@ -44,7 +53,9 @@ async function convertAll() {
       ...frontmatterData,
     }
 
-    const md = matter.stringify(`<div class="adoc-content">\n${htmlWithSVGandCodeBlock}\n</div>`, frontmatter)
+    // タイトルを取得
+    const title = doc.getDocumentTitle(); // => "ドキュメントタイトル"
+    const md = matter.stringify(`\n<h1>${title}</h1>${htmlWithSVGandCodeBlock}\n`, frontmatter)
 
     // ファイルの先頭に空行やBOMが入らないよう注意
     await fs.writeFile(outputPath, md, 'utf-8')
