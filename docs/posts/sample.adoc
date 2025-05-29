@@ -37,13 +37,40 @@ Asciidoc 本文の開始。
   S = \int _a ^b f(x)dx
 \end{align*}
 
-
 == Custom Containers
 
-[source, js, option="{1}"]
-----
-hey, come on.
-----
+Input
+
+[source, adoc]
+------
+[.info.custom-block, title='INFO']
+****
+This is an info box.
+****
+
+[.tip.custom-block, title='TIP']
+****
+This is a tip box.
+****
+
+[.warning.custom-block, title='WARNING']
+****
+This is a warning box.
+****
+
+[.danger.custom-block, title='DANGER']
+****
+This is a danger box.
+****
+
+
+[.details.custom-block%collapsible, title='Details']
+====
+This is a details block.
+====
+------
+
+
 
 Output
 

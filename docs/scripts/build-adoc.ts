@@ -10,30 +10,6 @@ const adoc = asciidoctor()
 const inputDir = path.resolve(__dirname, '../posts')
 const outputDir = path.resolve(__dirname, '../')
 
-type CodeBlock = {
-  lang: string
-  options?: string
-  code: string
-}
-
-function extractAndReplaceSourceBlocks(adocText: string): { replaced: string, blocks: CodeBlock[] } {
-  const blocks: CodeBlock[] = []
-
-  const replaced = adocText.replace(
-    /^\[source, *([a-zA-Z0-9]+)(?:, *options? *= *["{]([^"\]}]*)["}])?\]\n----\n([\s\S]*?)\n----/gm,
-    (_, lang, options, code) => {
-      blocks.push({
-        lang,
-        options,
-        code: code.trim()
-      })
-      return `\\\\\\\\\\\na\\\\\\\\\\\n`
-    }
-  )
-
-  return { replaced, blocks }
-}
-
 async function convertAll() {
   await fs.mkdir(outputDir, { recursive: true })
   const files = await fs.readdir(inputDir)
@@ -48,43 +24,40 @@ async function convertAll() {
     const rawAdoc = await fs.readFile(inputPath, 'utf-8')
     const { content: adocBody, data: frontmatterData } = matter(rawAdoc)
 
-    // 1〜2. ソースコードブロックを抽出して\\\\a\\\\に置換
-    const { replaced, blocks } = extractAndReplaceSourceBlocks(adocBody)
-
-    // 3. AsciiDoc → HTML
-    const html = adoc.convert(replaced, {
+    // 1. AsciiDoc を HTML に変換
+    const html = adoc.convert(adocBody, {
       safe: 'unsafe',
       backend: 'html5',
-      attributes: {
+      attributes:{
         'sectnums': true
       }
     }) as string
 
-    // 4. 数式をSVGへ
+    // HTML中の数式をSVGに変換
     const htmlWithSVG = replaceMathWithSVG(html)
-
-    // 5. <p>\\a\\</p> を探して、Markdownコードブロックに差し替え
-    const segments = htmlWithSVG.split(/<p>\\\\\\\\\\\na\\\\\\\\\\\n<\/p>/)
-    let combined = ''
-    for (let i = 0; i < segments.length; i++) {
-      combined += segments[i]
-      if (i < blocks.length) {
-        const block = blocks[i]
-        const opt = block.options ? `{${block.options}}` : ''
-        combined += `\n\`\`\`${block.lang}${opt}\n${block.code}\n\`\`\`\n`
-      }
-    }
+    //HTML中のコードブロックをmd記法に変換
+    const htmlWithSVGandCodeBlock = convertCodeBlocksToMarkdown(htmlWithSVG)
 
     const frontmatter = {
       title: frontmatterData.title || baseName,
       ...frontmatterData,
     }
 
-    const md = matter.stringify(`<div class="adoc-content">\n${combined}\n</div>`, frontmatter)
+    const md = matter.stringify(`<div class="adoc-content">\n${htmlWithSVGandCodeBlock}\n</div>`, frontmatter)
 
+    // ファイルの先頭に空行やBOMが入らないよう注意
     await fs.writeFile(outputPath, md, 'utf-8')
     console.log(`Converted ${file} → ${path.relative(process.cwd(), outputPath)}`)
   }
+}
+
+export function convertCodeBlocksToMarkdown(input: string): string {
+  return input.replace(
+    /<pre class="highlight">\s*<code class="language-([a-zA-Z0-9]+)"[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/g,
+    (_, lang: string, code: string) => {
+      return `\n\`\`\`${lang}\n${code}\n\`\`\`\n`
+    }
+  )
 }
 
 convertAll().catch(e => {
