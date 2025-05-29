@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "tsx scripts/build-adoc.ts && vitepress dev docs",
-    "build": "tsx scripts/build-adoc.ts && vitepress build docs"
+    "build": "tsx scripts/build-adoc.ts && vitepress build docs",
+    "dev": "tsx scripts/build-adoc.ts && vitepress dev docs"
   },
   "dependencies": {
     "@asciidoctor/core": "^3.0.4",
@@ -10,7 +10,6 @@
     "tsx": "^4.19.4"
   },
   "devDependencies": {
-    "@lando/vitepress-theme-default-plus": "^1.1.1",
     "vitepress": "^1.6.3"
   }
 }
