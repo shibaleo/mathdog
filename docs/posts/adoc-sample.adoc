@@ -1,11 +1,12 @@
 ---
-title: Markdown Extension Examples
+title: Asciidoc Syntax Examples
 description: 説明文
+layout: doc
 tags:
   - tag1
   - tag2
 ---
-= Markdown Extension Examples
+= Asciidoc Syntax Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
@@ -19,13 +20,7 @@ VitePress provides Syntax Highlighting powered by link:https://github.com/shikij
 . ordered
 . list
 
-:def-sample: 定義 {section}.{counter:num}. サンプル
-[#def-sample.definition.NoBreak, title='{def-sample}']
-[[def-sample, {section}.{num}]]
-****
-定義枠が帰納するかのチェック
-****
-
+数式の使用も可
 
 \(D = \int _a ^b f(x)dx\)
 

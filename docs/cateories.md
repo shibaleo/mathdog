@@ -7,24 +7,24 @@ hero:
   text: "shibaleo's website"
   tagline: My great project tagline
   actions:
-    - theme: brand
+    - theme: alt
       text: Posts
       link: /
     - theme: alt
       text: Tags
       link: /tags
-    - theme: alt
+    - theme: brand
       text: Categories
       link: /cateories
 
 features:
-  - title: Asciidoc Syntax
+  - title: Notes on Mathematics
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: /adoc-sample
-  - title: Markdown Examples
+  - title: IT Tips
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: /markdown-examples
-  - title: API Examples
+  - title: Tax Accountant
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: /api-examples
 ---
