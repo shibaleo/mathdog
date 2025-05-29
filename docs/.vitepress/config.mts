@@ -15,7 +15,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Sample', link: '/generated/sample' }
+      { text: 'Sample', link: '/sample' }
     ],
 
     sidebar: [
@@ -24,7 +24,7 @@ export default defineConfig({
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' },
-          { text: 'Adoc Sample', link: '/generated/sample' }
+          { text: 'Adoc Sample', link: '/sample' }
         ]
       }
     ],
