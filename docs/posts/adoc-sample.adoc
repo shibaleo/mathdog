@@ -1,38 +1,49 @@
 ---
 layout: doc
 ---
-
-# Markdown Extension Examples
+= Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-## Math Formula
+== hid
 
-$f(x)$
+== Math Formula
 
-$f(x)$
+これは\(\displaystyle S = \int _a ^b f(x)dx\)という式です
 
+\begin{align}
+  S = k \\
+  y = h
+\end{align}
 
-$$
-  \begin{align}
-    S = k \\
-    y = h
-  \end{align}
-$$
+\begin{align*}
+  v = \sqrt{2gh}
+\end{align*}
 
-## Include Snippents
+== Include Snippents
+
+[source, ts, option="{1-2,4}"]
+------
+function transDisplayLatexMath(input: string): string {
+  return input.replace(/\\begin\{([\w*]+)\}[\s\S]*?\\end\{\1\}/g, (match) => {
+    return `\n$$\n${match}\n$$`;
+  });
+}
+------
+
+include::../scripts/transpile.ts[]
 
 Input
 
 ````md
-<<< @/scripts/build-adoc.ts{2}
+<<< @/scripts/transpile.ts{2}
 ````
 
-<<< @/scripts/build-adoc.ts{2}
+<<< @/scripts/transpile.ts{2}
 
 
 
-## Syntax Highlighting
+== Syntax Highlighting
 
 VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
 
@@ -62,7 +73,7 @@ export default {
 }
 ```
 
-## Custom Containers
+== Custom Containers
 
 **Input**
 

@@ -1,6 +1,7 @@
 import { Plugin } from 'vite'
 import fs from 'fs'
 import path from 'path'
+import {expandIncludes} from './expandincludes'
 
 const INPUT_DIR = path.resolve(__dirname, '../posts')
 const OUTPUT_DIR = path.resolve(__dirname, '../')
@@ -10,9 +11,45 @@ function transpileAdocToMd(txtPath: string) {
   const fileName = path.basename(txtPath, '.adoc')
   const mdPath = path.join(OUTPUT_DIR, `${fileName}.md`)
   const content = fs.readFileSync(txtPath, 'utf-8')
-  const mdContent = `${content}`
+  let mdContent = `${content}`
+
+  mdContent = expandIncludes(mdContent,'./')
+  mdContent = transInlineLatexMath(mdContent)
+  mdContent = transDisplayLatexMath(mdContent)
+  mdContent = transCodeSnippet(mdContent)
   fs.writeFileSync(mdPath, mdContent)
-  console.log(`[adoc->md] transpiled ${fileName}.md to ${fileName}.md`)
+  console.log(`[adoc->md] transpiled ${fileName}.adoc to ${fileName}.md`)
+}
+
+function transSectionLevelDelimiter(input: string): string {
+  // AsciiDocのセクションレベルをMarkdownの見出しに変換
+  return input.replace(/^=+\s/gm, (match) => {
+    // 行頭の"=" の数を数えて、その数だけ "#" に変換
+    const equalCount = match.trim().length;
+    return '#'.repeat(equalCount) + ' ';
+  });
+}
+
+function transInlineLatexMath(input: string): string {
+  return input.replace(/\\\((.+?)\\\)/g, (_, content: string) => {
+    return ` $${content}$ `;
+  });
+}
+
+function transDisplayLatexMath(input: string): string {
+  return input.replace(/\\begin\{([\w*]+)\}[\s\S]*?\\end\{\1\}/g, (match) => {
+    return `\n$$\n${match}\n$$`;
+  });
+}
+
+function transCodeSnippet(input: string): string {
+  return input.replace(
+    /^\[source,\s*(\w+)(?:,\s*option="\{(.+?)\}")?\]\s*\n^\s*-{3,}\s*\n([\s\S]*?)^\s*-{3,}\s*$/gm,
+    (_match, lang: string, option: string | undefined, code: string) => {
+      const optionSuffix = option ? `{${option}}` : '';
+      return `\`\`\`\`\`${lang}${optionSuffix}\n${code}\n\`\`\`\`\``;
+    }
+  );
 }
 
 function transpileAll() {
