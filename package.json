@@ -1,16 +1,15 @@
 {
   "scripts": {
-    "build": "tsx docs/scripts/build-adoc.ts && vitepress build docs",
-    "dev": "tsx docs/scripts/build-adoc.ts && npx vitepress dev docs"
+    "build": "vitepress build docs",
+    "dev": "npx vitepress dev docs"
   },
   "dependencies": {
-    "@asciidoctor/core": "^3.0.4",
-    "gray-matter": "^4.0.3",
     "mathjax-full": "^3.2.2",
     "tsx": "^4.19.4"
   },
   "devDependencies": {
     "@types/node": "^22.15.24",
+    "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.6.3"
   }
 }

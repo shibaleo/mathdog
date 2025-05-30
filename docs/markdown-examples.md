@@ -6,6 +6,31 @@ layout: doc
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
+## Math Formula
+
+\(f(x)\)
+
+$f(x)$
+
+$$
+  \begin{align}
+    S = k \\
+    y = h
+  \end{align}
+$$
+
+## Include Snippents
+
+Input
+
+````md
+<<< @/scripts/build-adoc.ts{2}
+````
+
+<<< @/scripts/build-adoc.ts{2}
+
+
+
 ## Syntax Highlighting
 
 VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
