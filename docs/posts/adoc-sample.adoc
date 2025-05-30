@@ -1,92 +1,115 @@
 ---
-title: Asciidoc Syntax Examples
-description: 説明文
 layout: doc
-tags:
-  - tag1
-  - tag2
 ---
-= Asciidoc Syntax Examples
+
+# Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-== Syntax Highlighting
+## Math Formula
 
-VitePress provides Syntax Highlighting powered by link:https://github.com/shikijs/shiki[Shiki], with additional features like line-highlighting:
+$f(x)$
 
-.list
-. this
-. is
-. ordered
-. list
+$f(x)$
 
-数式の使用も可
 
-\(D = \int _a ^b f(x)dx\)
+$$
+  \begin{align}
+    S = k \\
+    y = h
+  \end{align}
+$$
 
-\begin{align*}
-  S = \int _a ^b f(x)dx
-\end{align*}
-
-== Custom Containers
+## Include Snippents
 
 Input
 
-[source, adoc]
-------
-[.info.custom-block, title='INFO']
-****
+````md
+<<< @/scripts/build-adoc.ts{2}
+````
+
+<<< @/scripts/build-adoc.ts{2}
+
+
+
+## Syntax Highlighting
+
+VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+
+**Input**
+
+````md
+```js{4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+````
+
+**Output**
+
+```js{4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+
+## Custom Containers
+
+**Input**
+
+```md
+::: info
 This is an info box.
-****
+:::
 
-[.tip.custom-block, title='TIP']
-****
-This is a tip box.
-****
+::: tip
+This is a tip.
+:::
 
-[.warning.custom-block, title='WARNING']
-****
-This is a warning box.
-****
+::: warning
+This is a warning.
+:::
 
-[.danger.custom-block, title='DANGER']
-****
-This is a danger box.
-****
+::: danger
+This is a dangerous warning.
+:::
 
-
-[.details.custom-block%collapsible, title='Details']
-====
+::: details
 This is a details block.
-====
-------
+:::
+```
 
+**Output**
 
-
-Output
-
-[.info.custom-block, title='INFO']
-****
+::: info
 This is an info box.
-****
+:::
 
-[.tip.custom-block, title='TIP']
-****
-This is a tip box.
-****
+::: tip
+This is a tip.
+:::
 
-[.warning.custom-block, title='WARNING']
-****
-This is a warning box.
-****
+::: warning
+This is a warning.
+:::
 
-[.danger.custom-block, title='DANGER']
-****
-This is a danger box.
-****
+::: danger
+This is a dangerous warning.
+:::
 
-
-[.details.custom-block%collapsible, title='Details']
-====
+::: details
 This is a details block.
-====
+:::
+
+## More
+
+Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).

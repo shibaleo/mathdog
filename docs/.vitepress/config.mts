@@ -1,10 +1,19 @@
 import { defineConfig } from 'vitepress'
+import transAdocToMd from '../scripts/transpile'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "website",
   description: "shibaleo's website",
+  vite:{
+    plugins: [
+      transAdocToMd()
+    ]
+  },
   lastUpdated: true,
+  markdown: {
+    math: true
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     editLink: {
@@ -17,14 +26,13 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Sample', link: '/sample' }
+      { text: 'API Examples', link: '/api-examples' }
     ],
 
     sidebar: [
       {
         text: 'Examples',
         items: [
-          { text: 'Adoc Sample', link: '/adoc-sample' },
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' },
         ]
