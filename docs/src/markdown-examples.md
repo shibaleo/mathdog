@@ -25,10 +25,10 @@ erw
 Input
 
 ````md
-<<< @/scripts/build-adoc.ts{2}
+<<< @../scripts/build-adoc.ts{2}
 ````
 
-<<< @/scripts/replace-math.ts{2}
+<<< @../../scripts/replace-math.ts{2}
 
 
 

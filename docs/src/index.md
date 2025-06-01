@@ -7,24 +7,24 @@ hero:
   text: "shibaleo's website"
   tagline: My great project tagline
   actions:
-    - theme: alt
-      text: Posts
-      link: /
     - theme: brand
+      text: Home
+      link: /
+    - theme: alt
       text: Tags
       link: /tags
     - theme: alt
       text: Categories
-      link: /cateories
+      link: /categories/
 
 features:
-  - title: Geometry
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    link: /adoc-sample
-  - title: Mathemetical Logic
+  - title: Tu manifolds
+    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
+    link: /Tu-manifolds
+  - title: Markdown Examples
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: /markdown-examples
-  - title: Singularity Theory
+  - title: API Examples
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: /api-examples
 ---
