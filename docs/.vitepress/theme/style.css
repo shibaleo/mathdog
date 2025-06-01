@@ -1,19 +1,1 @@
 /* docs/.vitepress/theme/style.css */
-.adoc-content {
-  line-height: 1.7;
-  font-size: 1rem;
-}
-.mjx-chtml {
-  font-family: MJX_Main, MJX_Size1, MJX_Size2, MJX_Size3, MJX_Size4;
-  line-height: 1;
-}
-
-mjx-container[display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[display="true"] svg {
-  display: inline-block;
-}

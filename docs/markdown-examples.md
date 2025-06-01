@@ -8,16 +8,17 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Math Formula
 
-\(f(x)\)
+このように，\(f(x)\)でうｓ．
 
-$f(x)$
 
-$$
-  \begin{align}
-    S = k \\
-    y = h
-  \end{align}
-$$
+どちらでも$f(x)$OKです
+
+erw
+\begin{align}
+  S = k \\
+  y = h
+\end{align}
+
 
 ## Include Snippents
 
@@ -27,7 +28,7 @@ Input
 <<< @/scripts/build-adoc.ts{2}
 ````
 
-<<< @/scripts/build-adoc.ts{2}
+<<< @/scripts/replace-math.ts{2}
 
 
 
