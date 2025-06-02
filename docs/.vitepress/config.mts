@@ -24,8 +24,8 @@ export default defineConfig({
     },
     nav: [
       { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
-      { text: "API Examples", link: "/api-examples" },
+      { text: "Posts", link: "/examples/markdown-examples" },
+      { text: "Tags", link: "/api-examples" },
     ],
 
     sidebar: [

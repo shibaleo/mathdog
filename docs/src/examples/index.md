@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "website"
-  text: "shibaleo's website"
-  tagline: My great project tagline
+  text: "Examples"
+  tagline:
   actions:
     - theme: brand
       text: Home
@@ -18,9 +18,6 @@ hero:
       link: /categories/
 
 features:
-  - title: Tu manifolds
-    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
-    link: /Tu-manifolds
   - title: Examples
     details: markdown examples
     link: /examples/markdown-examples
