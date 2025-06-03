@@ -3,7 +3,7 @@ import { replaceMath } from "../scripts/replace-math";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "website",
+  title: "shibaleo",
   description: "shibaleo's website",
   srcDir: 'src',
   vite: {

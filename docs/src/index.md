@@ -3,19 +3,19 @@
 layout: home
 
 hero:
-  name: "website"
+  name: "shibaleo"
   text: "shibaleo's website"
   tagline: My great project tagline
 
 features:
   - title: Posts
-    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
+    details: All posts in this website
     link: /posts
   - title: Tags
-    details: markdown examples
+    details: All tags in this website
     link: /tags
   - title: About
-    details: api examples
+    details: about shibaleo
     link: /about
 ---
 
