@@ -5,7 +5,7 @@ import { replaceMath } from "../scripts/replace-math";
 export default defineConfig({
   title: "shibaleo",
   description: "shibaleo's website",
-  srcDir: 'src',
+  srcDir: "src",
   vite: {
     plugins: [replaceMath()],
   },
@@ -16,7 +16,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     editLink: {
-      pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
+      pattern: "https://github.com/shibaleo/website/edit/main/docs/:path",
     },
     footer: {
       message: "Released under the MIT License.",
@@ -25,23 +25,35 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Posts", link: "/posts" },
-      { text: "Tags", link: "/tags" },
       { text: "About", link: "/about" },
     ],
 
-    sidebar: [
-      {
-        text: "Home",
-        items: [
-          { text: "Tu Manifolds", link: "/Tu-manifolds",
-            items: [
-              { text: "Problem 1.1", link: "/Tu-manifolds/problems/1.1" },]
-          },
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
-      },
-    ],
+    sidebar: {
+      "/": [],
+      "/posts/": [
+        {
+          text: "Exapmles",
+          link: "/posts/examples",
+          items: [
+            {
+              text: "Markdown Examples",
+              link: "posts/examples/markdown-examples",
+            },
+            {
+              text: "Runtime API Examples",
+              link: "posts/examples/api-examples",
+            },
+          ],
+        },
+        {
+          text: "Tu Manifolds",
+          link: "/posts/Tu-manifolds",
+          items: [
+            { text: "Problem 1.1", link: "posts/Tu-manifolds/problems/problems/1.1" },
+          ],
+        },
+      ],
+    },
 
     socialLinks: [
       { icon: "github", link: "https://github.com/shibaleo/website" },

@@ -3,26 +3,19 @@
 layout: home
 
 hero:
-  name: "website"
+  name: "shibaleo"
   text: "Examples"
-  tagline:
-  actions:
-    - theme: brand
-      text: Home
-      link: /
-    - theme: alt
-      text: Tags
-      link: /tags
-    - theme: alt
-      text: Categories
-      link: /categories/
 
 features:
   - title: Examples
     details: markdown examples
-    link: /examples/markdown-examples
+    link: /posts/examples/markdown-examples
   - title: API Examples
     details: api examples
-    link: /examples/api-examples
+    link: /posts/examples/api-examples
 ---
 
+<HomeButton />
+<script setup>
+import HomeButton from '../../../components/HomeButton.vue'
+</script>

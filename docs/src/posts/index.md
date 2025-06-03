@@ -3,29 +3,20 @@
 layout: home
 
 hero:
-  name: "website"
-  text: "shibaleo's website"
-  tagline: My great project tagline
-  actions:
-    - theme: alt
-      text: Posts
-      link: /
-    - theme: alt
-      text: Tags
-      link: /tags
-    - theme: brand
-      text: Categories
-      link: /cateories
+  name: "shibaleo"
+  text: "shibaleo's posts"
+  tagline: covering various topics in mathematics and web development
 
 features:
-  - title: Notes on Mathematics
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    link: /adoc-sample
-  - title: IT Tips
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    link: /markdown-examples
-  - title: Tax Accountant
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    link: /api-examples
+  - title: Exapmles
+    details: a preset examples
+    link: /posts/examples
+  - title: Tu Manifolds
+    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
+    link: /posts/Tu-manifolds
 ---
 
+<HomeButton />
+<script setup>
+import HomeButton from '../../components/HomeButton.vue'
+</script>
