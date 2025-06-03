@@ -3,19 +3,28 @@
 layout: home
 
 hero:
-  name: "About"
-  text: "shibaleo"
-
-features:
-  - title: Tu manifolds
-    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
-    link: /Tu-manifolds
-  - title: Examples
-    details: markdown examples
-    link: /examples/markdown-examples
-  - title: API Examples
-    details: api examples
-    link: /examples/api-examples
+  name: "shibaleo"
+  text: "A mathematics enthusiast and a web developer"
+  image:
+    src: /assets/img/shibaleo.png
+    alt: shibaleo
 ---
 
-my carreer here
+## Matters of Interest
+
+- Mathematics
+  * Differential geometry with singularities
+  * Information geometry
+  * Classical geometry on first-order logic
+- Web development
+  * Frontend: Vue, Astro, 11ty, Jekyll
+  * Backend: Node.js
+- Markup languages
+  * AsciiDoc
+
+Thanks for visiting my website!
+
+<HomeButton />
+<script setup>
+import HomeButton from '../../components/HomeButton.vue'
+</script>
