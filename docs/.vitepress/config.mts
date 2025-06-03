@@ -24,8 +24,9 @@ export default defineConfig({
     },
     nav: [
       { text: "Home", link: "/" },
-      { text: "Posts", link: "/examples/markdown-examples" },
-      { text: "Tags", link: "/api-examples" },
+      { text: "Posts", link: "/posts" },
+      { text: "Tags", link: "/tags" },
+      { text: "About", link: "/about" },
     ],
 
     sidebar: [
@@ -43,7 +44,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/shibaleo/website" },
     ],
   },
 });
