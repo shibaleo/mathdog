@@ -1,5 +1,9 @@
 import { defineConfig } from "vitepress";
 import { replaceMath } from "../scripts/replace-math";
+import path from 'path'
+import { generateSidebar } from "../scripts/generate-sidebar";
+
+const srcDir = path.resolve(__dirname, '..', 'src')
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -28,32 +32,7 @@ export default defineConfig({
       { text: "About", link: "/about" },
     ],
 
-    sidebar: {
-      "/": [],
-      "/posts/": [
-        {
-          text: "Exapmles",
-          link: "/posts/examples",
-          items: [
-            {
-              text: "Markdown Examples",
-              link: "posts/examples/markdown-examples",
-            },
-            {
-              text: "Runtime API Examples",
-              link: "posts/examples/api-examples",
-            },
-          ],
-        },
-        {
-          text: "Tu Manifolds",
-          link: "/posts/Tu-manifolds",
-          items: [
-            { text: "Problem 1.1", link: "posts/Tu-manifolds/problems/problems/1.1" },
-          ],
-        },
-      ],
-    },
+    sidebar: generateSidebar('', srcDir),
 
     socialLinks: [
       { icon: "github", link: "https://github.com/shibaleo/website" },
