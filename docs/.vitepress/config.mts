@@ -16,7 +16,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     editLink: {
-      pattern: "https://github.com/shibaleo/website/edit/main/docs/:path",
+      pattern: "https://github.com/shibaleo/website/edit/main/docs/src/:path",
     },
     footer: {
       message: "Released under the MIT License.",
