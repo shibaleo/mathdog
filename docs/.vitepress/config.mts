@@ -10,8 +10,14 @@ export default defineConfig({
   title: "shibaleo",
   description: "shibaleo's website",
   srcDir: "src",
+  
   vite: {
     plugins: [replaceMath()],
+    resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, '../components'),
+    },
+  },
   },
   lastUpdated: true,
   markdown: {

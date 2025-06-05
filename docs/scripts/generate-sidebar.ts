@@ -2,69 +2,83 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+interface SidebarItem {
+  text: string
+  link?: string
+  collapsed?: boolean
+  items?: SidebarItem[]
+}
+
 /**
- * Markdownからタイトルを取得する
- * frontmatterのtitle優先、なければファイル名（拡張子なし）
+ * frontmatter の title を取得する（なければ undefined）
  */
-function extractTitle(filePath: string): string {
+function getFrontmatterTitle(filePath: string): string | undefined {
   const content = fs.readFileSync(filePath, 'utf-8')
   const { data } = matter(content)
-  return data?.title ?? path.basename(filePath, '.md')
+  return data?.title
 }
 
 /**
- * サイドバーの1項目を生成する
- * @param filePath ファイルの絶対パス
- * @param srcDir srcフォルダの絶対パス
+ * タイトルを決定（fallbackName は frontmatter に title がない場合に使用）
  */
-function generateSidebarItem(filePath: string, srcDir: string): { text: string; link: string } {
-  const title = extractTitle(filePath)
-  const isIndex = path.basename(filePath) === 'index.md'
+function determineText(filePath: string, fallbackName: string): string {
+  return getFrontmatterTitle(filePath) ?? fallbackName
+}
 
-  // srcDirからの相対パスを算出
-  const relativeToSrc = path.relative(srcDir, filePath).replace(/\\/g, '/')
+/**
+ * 指定ディレクトリ以下の .md ファイル・ディレクトリを再帰的に処理
+ * @param currentDir 現在処理中の絶対パス
+ * @param srcDir src フォルダの絶対パス（link のルート起点）
+ */
+function buildSidebarTree(currentDir: string, srcDir: string): SidebarItem[] {
+  const entries = fs.readdirSync(currentDir, { withFileTypes: true })
 
-  let link: string
-  if (isIndex) {
-    const parentDir = path.dirname(relativeToSrc)
-    link = '/' + (parentDir === '.' ? '' : parentDir + '/')
-  } else {
-    link = '/' + relativeToSrc.replace(/\.md$/, '')
+  const mdItems: SidebarItem[] = []
+  const dirItems: SidebarItem[] = []
+
+  for (const entry of entries) {
+    const fullPath = path.join(currentDir, entry.name)
+
+    if (entry.isDirectory()) {
+      if (entry.name === 'about' || entry.name === 'assets') continue
+
+      const indexPath = path.join(fullPath, 'index.md')
+      const fallback = entry.name
+      const text = fs.existsSync(indexPath)
+        ? determineText(indexPath, fallback)
+        : fallback
+
+      const subItems = buildSidebarTree(fullPath, srcDir)
+
+      const relativeDirPath = path.relative(srcDir, fullPath).replace(/\\/g, '/')
+      const dirLink = '/' + relativeDirPath + '/'
+
+      dirItems.push({
+        text,
+        link: dirLink,
+        collapsed: false,
+        items: subItems
+      })
+    } else if (entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md') {
+      const relativePath = path.relative(srcDir, fullPath).replace(/\\/g, '/')
+      const link = '/' + relativePath.replace(/\.md$/, '')
+      const fallback = path.basename(fullPath, '.md')
+      const text = determineText(fullPath, fallback)
+
+      mdItems.push({ text, link })
+    }
   }
 
-  return { text: title, link }
+  return [...mdItems, ...dirItems]
 }
 
 /**
- * 再帰的にsidebar配列を生成する
- * @param dir srcフォルダ以下の相対パス（例: '' または 'posts'）
- * @param srcDir srcフォルダの絶対パス
+ * サイドバーを生成する
+ * @param dir srcDir からの相対パス（例: 'posts'）
+ * @param srcDir src フォルダの絶対パス（例: path.resolve(__dirname, '..')）
  */
-export function generateSidebar(dir: string, srcDir: string): any[] {
-  const fullDir = path.resolve(srcDir, dir)
-  if (!fs.existsSync(fullDir)) return []
-
-  const entries = fs.readdirSync(fullDir, { withFileTypes: true })
-
-  // index.mdを除外するフィルタを追加
-  const items = entries
-    .filter(e => e.isFile() && e.name.endsWith('.md') && e.name !== 'index.md')
-    .map(e => generateSidebarItem(path.join(fullDir, e.name), srcDir))
-
-  const dirs = entries
-    .filter(e => e.isDirectory()
-      && e.name !== 'assets' // assetsフォルダは除外
-      && e.name !== 'about' // aboutフォルダは除外
-      )
-    .map(e => {
-      const subdir = path.join(dir, e.name)
-      return {
-        text: e.name,
-        link: '/' + subdir.replace(/\\/g, '/') + '/',  // 見出しにリンク付けてる場合
-        collapsed: false,
-        items: generateSidebar(subdir, srcDir)
-      }
-    })
-
-  return [...items, ...dirs]
+export function generateSidebar(dir: string, srcDir: string): SidebarItem[] {
+  const targetDir = path.resolve(srcDir, dir)
+  if (!fs.existsSync(targetDir)) return []
+  return buildSidebarTree(targetDir, srcDir)
 }

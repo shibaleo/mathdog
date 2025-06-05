@@ -1,22 +1,17 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
-
-hero:
-  name: "shibaleo"
-  text: "shibaleo's posts"
-  tagline: covering various topics in mathematics and web development
-
-features:
-  - title: Exapmles
-    details: a preset examples
-    link: /posts/examples
-  - title: Tu Manifolds
-    details: Answers and Explanations for Problems in Tu's "An Introduction to Manifolds"
-    link: /posts/Tu-manifolds
+layout: doc
+title: Posts
+description: All posts in this website
 ---
 
+<ContentList :data="data" />
+
 <HomeButton />
+
 <script setup>
-import HomeButton from '../../components/HomeButton.vue'
+import { useData } from 'vitepress'
+const { theme, page, frontmatter } = useData()
+import HomeButton from '@components/HomeButton.vue'
+import ContentList from '@components/ContentList.vue'
+import { data } from './menu.data.ts'
 </script>
