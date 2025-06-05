@@ -51,11 +51,14 @@ function buildSidebarTree(currentDir: string, srcDir: string): SidebarItem[] {
       const subItems = buildSidebarTree(fullPath, srcDir)
 
       const relativeDirPath = path.relative(srcDir, fullPath).replace(/\\/g, '/')
-      const dirLink = '/' + relativeDirPath + '/'
+      let dirLink: string | undefined
+      if (entry.name === 'posts') {
+        dirLink = '/' + relativeDirPath + '/'
+      }
 
       dirItems.push({
         text,
-        link: dirLink,
+        link: dirLink? dirLink : undefined,
         collapsed: false,
         items: subItems
       })

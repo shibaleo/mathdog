@@ -5,17 +5,19 @@ title: Posts
 hero:
   name: "shibaleo"
   text: "shibaleo's website"
-  tagline: A math enthusiast's hobby website
+  actions:
+    - theme: brand
+      text: View Posts
+      link: /posts
+    - theme: alt
+      text: About Me
+      link: /about
   image:
     src: /assets/img/shibaleo.png
     alt: shibaleo
 
 features:
-  - title: Posts
-    details: All posts in this website
-    link: /posts
-  - title: About
-    details: about shibaleo
-    link: /about
+  - title: Math Enthusiast
+    details: A hobby website for math enthusiasts
 ---
 
