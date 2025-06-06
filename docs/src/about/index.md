@@ -6,7 +6,7 @@ hero:
   name: "shibaleo"
   text: "A mathematics enthusiast and a web developer"
   image:
-    src: /assets/img/shibaleo.png
+    src: /img/shibaleo.png
     alt: shibaleo
 ---
 
