@@ -13,7 +13,7 @@ hero:
       text: About Me
       link: /about
   image:
-    src: /assets/img/shibaleo.png
+    src: /img/shibaleo.png
     alt: shibaleo
 
 features:

@@ -10,7 +10,6 @@ export default defineConfig({
   title: "shibaleo",
   description: "shibaleo's website",
   srcDir: "src",
-  
   vite: {
     plugins: [replaceMath()],
     resolve: {
