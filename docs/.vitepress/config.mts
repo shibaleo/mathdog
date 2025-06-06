@@ -7,7 +7,7 @@ const srcDir = path.resolve(__dirname, '..', 'src')
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "shibaleo",
+  title: "Mathdog",
   description: "shibaleo's website",
   srcDir: "src",
   vite: {
@@ -23,10 +23,6 @@ export default defineConfig({
     math: true,
   },
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    editLink: {
-      pattern: "https://github.com/shibaleo/website/edit/main/docs/src/:path",
-    },
     footer: {
       message: "Released under the MIT License.",
       copyright: "Copyright © 2025 shibaleo",

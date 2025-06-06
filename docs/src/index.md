@@ -1,16 +1,16 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-title: Posts
+title: Mathdog
 hero:
-  name: "shibaleo"
+  name: "Mathdog"
   text: "shibaleo's website"
   actions:
     - theme: brand
       text: View Posts
       link: /posts
     - theme: alt
-      text: About Me
+      text: About shibaleo
       link: /about
   image:
     src: /img/shibaleo.png

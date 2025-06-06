@@ -1,14 +1,12 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
-layout: home
-
-hero:
-  name: "shibaleo"
-  text: "A mathematics enthusiast and a web developer"
-  image:
-    src: /img/shibaleo.png
-    alt: shibaleo
+layout: doc
+title : About
 ---
+
+![shibaleo](/img/shibaleo.png){width=200px height=200px}
+
+# shibaleo
 
 ## Matters of Interest
 
@@ -24,7 +22,9 @@ hero:
 
 Thanks for visiting my website!
 
+<Timeline />
 <HomeButton />
 <script setup>
-import HomeButton from '../../components/HomeButton.vue'
+import HomeButton from '@components/HomeButton.vue'
+import Timeline from '@components/Timeline.vue'
 </script>
