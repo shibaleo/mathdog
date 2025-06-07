@@ -40,7 +40,10 @@ function buildSidebarTree(currentDir: string, srcDir: string): SidebarItem[] {
     const fullPath = path.join(currentDir, entry.name)
 
     if (entry.isDirectory()) {
-      if (entry.name === 'about' || entry.name === 'assets' || entry.name === 'public') continue
+      if (entry.name === 'about' ||
+          entry.name === 'assets' ||
+          entry.name === 'public' ||
+          entry.name === 'Drafts') continue
 
       const indexPath = path.join(fullPath, 'index.md')
       const fallback = entry.name

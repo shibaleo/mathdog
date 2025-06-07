@@ -1,4 +1,4 @@
-import { defineConfig } from "vitepress";
+import { withMermaid } from 'vitepress-plugin-mermaid';
 import { replaceMath } from "../scripts/replace-math";
 import path from 'path'
 import { generateSidebar } from "../scripts/generate-sidebar";
@@ -6,7 +6,7 @@ import { generateSidebar } from "../scripts/generate-sidebar";
 const srcDir = path.resolve(__dirname, '..', 'src')
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   title: "Mathdog",
   description: "shibaleo's website",
   srcDir: "src",
@@ -39,4 +39,6 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/shibaleo/website" },
     ],
   },
+  mermaid: { theme: 'forest' },
+  mermaidPlugin: { class: 'mermaid' }
 });

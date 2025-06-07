@@ -6,7 +6,9 @@
   "devDependencies": {
     "@types/node": "^22.15.24",
     "markdown-it-mathjax3": "^4.3.2",
-    "vitepress": "^1.6.3"
+    "mermaid": "^11.6.0",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-mermaid": "^2.0.17"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"

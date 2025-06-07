@@ -17,7 +17,7 @@ hero:
     alt: shibaleo
 
 features:
-  - title: Math Enthusiast
-    details: A hobby website for math enthusiasts
+  - title: Posts Genre
+    details: Posts in this website are on mathematics, technology and my daily life.
 ---
 

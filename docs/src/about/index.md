@@ -8,6 +8,12 @@ title : About
 
 # shibaleo
 
+Thank you for visiting my website!
+
+## Recent Jobs
+
+- study about tax accounting
+
 ## Matters of Interest
 
 - Mathematics
@@ -19,8 +25,6 @@ title : About
   * Backend: Node.js
 - Markup languages
   * AsciiDoc
-
-Thanks for visiting my website!
 
 <HomeButton />
 <script setup>
