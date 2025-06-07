@@ -6,3 +6,6 @@
   --vp-c-brand-2: #ff8c00;
 }
 
+.VPNavBarTitle .title{
+  color: orange; /* 好きな色に変更 */
+}
