@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Posts
-description: All posts in this website
+text: All posts in this website
 ---
 
 <ContentList :data="data" />

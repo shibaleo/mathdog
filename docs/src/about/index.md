@@ -22,7 +22,6 @@ title : About
 
 Thanks for visiting my website!
 
-<Timeline />
 <HomeButton />
 <script setup>
 import HomeButton from '@components/HomeButton.vue'

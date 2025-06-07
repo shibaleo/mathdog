@@ -1,1 +1,8 @@
 /* docs/.vitepress/theme/style.css */
+:root {
+  --vp-button-brand-bg: orange;
+  --vp-button-brand-hover-bg: #ff8c00;
+  --vp-c-brand-1: orange;
+  --vp-c-brand-2: #ff8c00;
+}
+
