@@ -2,6 +2,7 @@ import { withMermaid } from 'vitepress-plugin-mermaid';
 import { replaceMath } from "../scripts/replace-math";
 import path from 'path'
 import { generateSidebar } from "../scripts/generate-sidebar";
+import footnote from 'markdown-it-footnote'
 
 const srcDir = path.resolve(__dirname, '..', 'src')
 
@@ -21,6 +22,9 @@ export default withMermaid({
   lastUpdated: true,
   markdown: {
     math: true,
+    config: (md) => {
+      md.use(footnote)
+    }
   },
   themeConfig: {
     footer: {

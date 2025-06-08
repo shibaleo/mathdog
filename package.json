@@ -11,6 +11,7 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "markdown-it-footnote": "^4.0.0"
   }
 }
