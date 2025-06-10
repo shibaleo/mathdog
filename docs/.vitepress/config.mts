@@ -8,7 +8,7 @@ const srcDir = path.resolve(__dirname, '..', 'src')
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
-  title: "Mathdog",
+  title: "MathDog",
   description: "shibaleo's website",
   srcDir: "src",
   vite: {
