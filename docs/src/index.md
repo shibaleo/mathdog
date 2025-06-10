@@ -1,9 +1,9 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-title: Mathdog
+title: MathDog
 hero:
-  name: "Mathdog"
+  name: "MathDog"
   text: "shibaleo's website"
   actions:
     - theme: brand
