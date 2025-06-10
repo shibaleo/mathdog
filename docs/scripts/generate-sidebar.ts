@@ -40,7 +40,7 @@ function buildSidebarTree(currentDir: string, srcDir: string): SidebarItem[] {
     const fullPath = path.join(currentDir, entry.name)
 
     if (entry.isDirectory()) {
-      if (entry.name === 'about' ||
+      if (entry.name === 'About' ||
           entry.name === 'assets' ||
           entry.name === 'public' ||
           entry.name === 'Drafts') continue
@@ -65,7 +65,7 @@ function buildSidebarTree(currentDir: string, srcDir: string): SidebarItem[] {
         collapsed: false,
         items: subItems
       })
-    } else if (entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md') {
+    } else if (entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md' && entry.name !== 'about.md') {
       const relativePath = path.relative(srcDir, fullPath).replace(/\\/g, '/')
       const link = '/' + relativePath.replace(/\.md$/, '')
       const fallback = path.basename(fullPath, '.md')
