@@ -1,17 +1,17 @@
 /* docs/.vitepress/theme/style.css */
 :root {
-  --vp-button-brand-bg: #e17b34;
+  --vp-button-brand-bg: orange;
   --vp-button-brand-hover-bg: #ff8c00;
-  --vp-c-brand-1: #e17b34;
+  --vp-c-brand-1: orange;
   --vp-c-brand-2: #ff8c00;
 }
 
 .VPNavBarTitle .title{
-  color: #e17b34;
+  color: orange;
 }
 
 .content h2 {
-  border-top: 1px solid #e17b34!important;
+  border-top: 1px solid orange!important;
 }
 
 /* 記事本文のリンクの下線を削除 */
